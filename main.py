@@ -1,0 +1,73 @@
+import csv
+from enum import Enum, IntEnum
+
+
+class NameColumnValues(IntEnum):
+    HYUR_MIDLANDER_MALE = 1
+    HYUR_MIDLANDER_FEMALE = 2
+    HYUR_MIDLANDER_LAST_NAME = 3
+    HYUR_HIGHLANDER_MALE = 4
+    HYUR_HIGHLANDER_FEMALE = 5
+    HYUR_HIGHLANDER_LAST_NAME = 6
+
+    ELEZEN_MALE = 7
+    ELEZEN_FEMALE = 8
+    ELEZEN_WILDWOOD_LAST_NAME = 9
+    ELEZEN_DUSKWIGHT_LAST_NAME = 10
+
+    MIQOTE_SUN_MALE = 11
+    MIQOTE_SUN_FEMALE = 12
+    MIQOTE_SUN_MALE_LAST_NAME = 13
+    MIQOTE_SUN_FEMALE_LAST_NAME = 14
+    MIQOTE_MOON_MALE = 15
+    MIQOTE_MOON_FEMALE = 16
+    MIQOTE_MOON_LAST_NAME = 17
+
+    LALAFELL_PLAINSFOLK_FIRST_NAME_START = 18
+    LALAFELL_PLAINSFOLK_LAST_NAME_START = 19
+    LALAFELL_PLAINSFOLK_END_OF_NAMES = 20
+    LALAFELL_DUNESFOLK_MALE = 21
+    LALAFELL_DUNESFOLK_MALE_LAST_NAME = 22
+    LALAFELL_DUNESFOLK_FEMALE = 23
+    LALAFELL_DUNESFOLK_FEMALE_LAST_NAME = 24
+
+    ROEGADYN_SEA_WOLF_MALE = 25
+    ROEGADYN_SEA_WOLF_MALE_LAST_NAME = 26
+    ROEGADYN_SEA_WOLF_FEMALE = 27
+    ROEGADYN_SEA_WOLF_FEMALE_LAST_NAME = 28
+    ROEGADYN_HELLSGUARD_FIRST_NAME = 29
+    ROEGADYN_HELLSGUARD_MALE_LAST_NAME = 30
+    ROEGADYN_HELLSGUARD_FEMALE_LAST_NAME = 31
+
+    AURA_RAEN_MALE = 32
+    AURA_RAEN_FEMALE = 33
+    AURA_RAEN_LAST_NAME = 34
+    AURA_XAELA_MALE = 35
+    AURA_XAELA_FEMALE = 36
+    AURA_XAELA_LAST_NAME = 37
+
+    HROTHGAR_HELLIONS_FIRST_NAME = 38
+    HROTHGAR_HELLIONS_LAST_NAME = 39
+    HROTHGAR_LOST_FIRST_NAME = 40
+    HROTHGAR_LOST_LAST_NAME = 41
+
+    VIERA_FIRST_NAME = 42
+    VIERA_RAVA_LAST_NAME = 43
+    VIERA_VEENA_LAST_NAME = 44
+
+
+filename = "Name.csv"
+column_index = NameColumnValues. \
+    AURA_XAELA_MALE  # This is where you put in the name type you are looking for.
+
+with open(filename, newline='') as csvfile:
+    reader = csv.reader(csvfile)
+    column_data = []
+    for i, row in enumerate(reader):
+        if i != 0 and i != 2:
+            column_data.append(row[column_index])
+        if i == 1:
+            column_data.append("\n")
+
+print()
+print("\n".join(column_data))
